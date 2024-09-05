@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "username": "l",
+        "password": "$2b$12$FLFVxEkjdhbGD5yk0DcNXOqyr1bcUbPQQmyMaxSflxvvPOYSMWhpS"
+    },
+    {
+        "username": "d",
+        "password": "$2b$12$KF7bwK2qpDdu7zCaFYEjoucYAIvPT1QCEYw7ocXGw9N7se1VsxxWq"
+    }
+]
