@@ -2,7 +2,9 @@ import json, base64
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from colorama import Fore, Style
 from pymenu import Menu
+from datetime import datetime
 
 tareas = {}
 f = None
@@ -23,7 +25,14 @@ def set_user_data(user_pass: str, user_name: str):
 def agregar_tarea_ui():
     titulo = input("Ingrese título: ")
     desc = input("Ingrese descripción: ")
-    fecha_vencimiento = input("Ingrese fecha vencimiento (YYYY-mm-dd): ")
+    incorrecto = True
+    while incorrecto:
+        try:
+            fecha_vencimiento = input("Ingrese fecha vencimiento (YYYY-mm-dd): ")
+            parse_fecha(fecha_vencimiento)
+            incorrecto = False
+        except ValueError:
+            print(Fore.RED + "Formato incorrecto, por favor reintentar." + Style.RESET_ALL)
     etiqueta = input("Ingrese etiqueta: ")
     agregar_tarea(titulo, desc, fecha_vencimiento, etiqueta)
     menu_principal()
@@ -32,16 +41,21 @@ def mostrar_tareas_ui():
     if len(tareas) == 0:
         print("No hay tareas.")
     for key, value in tareas.items():
-        print(f"[ID {key}]")
-        print(
-f"""  Título: {value["titulo"]}
-  Descripción: {value["descripcion"]}
-  Fecha de vencimiento: {value["fecha_vencimiento"]}
-  Etiqueta: {value["etiqueta"]}
-""")
+        print(f"\n[ID {key}]")
+        print(f'  Título: {value["titulo"]}')
+        print(f'  Descripción: {value["descripcion"]}')
+        print(f'  Fecha de vencimiento: {value["fecha_vencimiento"]}')
+        print(f'  Etiqueta: {value["etiqueta"]}')
+        if(parse_fecha(value["fecha_vencimiento"]) < datetime.now()):
+            print(Fore.RED + "ATRASADA" + Style.RESET_ALL)
+        else:
+            print(Fore.GREEN + "A tiempo" + Style.RESET_ALL)
     input("Presiona enter para continuar.")
     menu_principal()
-    
+
+def parse_fecha(fecha: str) -> datetime:
+    return datetime.strptime(fecha, "%Y-%m-%d")
+
 
 def agregar_tarea(titulo: str, descripcion: str, fecha_vencimiento: str, etiqueta: str):
     global tareas
@@ -55,13 +69,14 @@ def agregar_tarea(titulo: str, descripcion: str, fecha_vencimiento: str, etiquet
         return
     ultimo_id = list(tareas.keys())[-1]
     tareas[ultimo_id + 1] = tarea
+    guardar_tareas()
 
 # Busca la tarea por criterio
 # (ejemplo, criterio: "titulo" y valor "A" retorna la tarea de título "A") 
 def get_tarea_id_by(criterio: str, valor: str):
     global tareas
     for id, tarea in tareas.items():
-        if tarea[criterio] == valor:
+        if valor in tarea[criterio]:
             return id
     return None
 
@@ -112,4 +127,5 @@ def menu_principal():
     menu.show()
 
 cargar_tareas()
+guardar_tareas()
 menu_principal()
