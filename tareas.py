@@ -42,19 +42,43 @@ def mostrar_tareas_ui():
         print("No hay tareas.")
     for key, value in tareas.items():
         print(f"\n[ID {key}]")
-        print(f'  Título: {value["titulo"]}')
-        print(f'  Descripción: {value["descripcion"]}')
-        print(f'  Fecha de vencimiento: {value["fecha_vencimiento"]}')
-        print(f'  Etiqueta: {value["etiqueta"]}')
-        if(parse_fecha(value["fecha_vencimiento"]) < datetime.now()):
-            print(Fore.RED + "ATRASADA" + Style.RESET_ALL)
-        else:
-            print(Fore.GREEN + "A tiempo" + Style.RESET_ALL)
+        print_tarea(value)
     input("Presiona enter para continuar.")
     menu_principal()
 
+def resultado_busqueda_ui(criterio: str):
+    busq = input("Ingresar búsqueda: ")
+    res = get_tareas_by(criterio, busq)
+    if not res:
+        print("No hay resultados.")
+    else:
+        for tarea in res:
+            print_tarea(tarea)
+    input("Enter para continuar.")
+    menu_principal()
+
+def buscar_tarea_ui():
+    menu_busqueda = Menu("Elegir criterio de búsqueda")
+    menu_busqueda.add_options([
+    ("Título", lambda: resultado_busqueda_ui("titulo")),
+    ("Descripción", lambda: resultado_busqueda_ui("descripcion")),
+    ("Fecha", lambda: resultado_busqueda_ui("fecha_vencimiento")),
+    ("Etiqueta", lambda: resultado_busqueda_ui("etiqueta"))
+    ])
+    menu_busqueda.show()
+
 def parse_fecha(fecha: str) -> datetime:
     return datetime.strptime(fecha, "%Y-%m-%d")
+
+def print_tarea(tarea):
+    print(f'  Título: {tarea["titulo"]}')
+    print(f'  Descripción: {tarea["descripcion"]}')
+    print(f'  Fecha de vencimiento: {tarea["fecha_vencimiento"]}')
+    print(f'  Etiqueta: {tarea["etiqueta"]}')
+    if(parse_fecha(tarea["fecha_vencimiento"]) < datetime.now()):
+        print(Fore.RED + "ATRASADA" + Style.RESET_ALL)
+    else:
+        print(Fore.GREEN + "A tiempo" + Style.RESET_ALL)
 
 
 def agregar_tarea(titulo: str, descripcion: str, fecha_vencimiento: str, etiqueta: str):
@@ -71,14 +95,14 @@ def agregar_tarea(titulo: str, descripcion: str, fecha_vencimiento: str, etiquet
     tareas[ultimo_id + 1] = tarea
     guardar_tareas()
 
-# Busca la tarea por criterio
-# (ejemplo, criterio: "titulo" y valor "A" retorna la tarea de título "A") 
-def get_tarea_id_by(criterio: str, valor: str):
+
+def get_tareas_by(criterio: str, valor: str):
     global tareas
+    res = []
     for id, tarea in tareas.items():
         if valor in tarea[criterio]:
-            return id
-    return None
+            res.append(tarea)
+    return res
 
 def guardar_tareas():
     global tareas
@@ -120,6 +144,7 @@ menu = Menu("Gestión de tareas")
 menu.add_options([
     ("Agregar tareas", agregar_tarea_ui),
     ("Mostrar todas las tareas", mostrar_tareas_ui),
+    ("Buscar tareas", buscar_tarea_ui),
     ("Salir", salir)
 ])
 
