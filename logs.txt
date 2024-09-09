@@ -77,3 +77,46 @@
 2024-09-09 01:41:31,432 [INFO] - Tareas encriptadas y guardadas
 2024-09-09 01:41:40,926 [INFO] - Tareas encriptadas y guardadas
 2024-09-09 01:41:40,928 [INFO] - Aplicacion cerrada
+2024-09-09 12:42:19,895 [INFO] - Cargado datos del usuario
+2024-09-09 12:42:19,907 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 12:42:28,809 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 12:42:28,810 [INFO] - Aplicacion cerrada
+2024-09-09 12:43:11,439 [INFO] - Cargado datos del usuario
+2024-09-09 12:43:11,440 [WARNING] - Excepcion esperada, archivo de datos guardado no encontrado, creando archivo
+2024-09-09 12:43:11,449 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 12:43:16,579 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 12:43:16,580 [INFO] - Aplicacion cerrada
+2024-09-09 13:00:14,943 [INFO] - Cargado datos del usuario
+2024-09-09 13:00:14,944 [WARNING] - Excepcion esperada, archivo de datos guardado no encontrado, creando archivo
+2024-09-09 13:00:14,948 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:00:15,432 [INFO] - Cargado datos del usuario
+2024-09-09 13:00:15,435 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:00:29,233 [INFO] - Cargado datos del usuario
+2024-09-09 13:00:29,241 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:00:29,708 [INFO] - Cargado datos del usuario
+2024-09-09 13:00:29,712 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:02:05,216 [INFO] - Cargado datos del usuario
+2024-09-09 13:02:05,217 [WARNING] - Excepcion esperada, archivo de datos guardado no encontrado, creando archivo
+2024-09-09 13:02:05,222 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:02:05,562 [INFO] - Cargado datos del usuario
+2024-09-09 13:02:05,565 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:02:15,524 [INFO] - Cargado datos del usuario
+2024-09-09 13:02:15,531 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:02:15,928 [INFO] - Cargado datos del usuario
+2024-09-09 13:02:15,931 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:02:20,591 [INFO] - Cargado datos del usuario
+2024-09-09 13:02:20,599 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:02:21,017 [INFO] - Cargado datos del usuario
+2024-09-09 13:02:21,020 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:02:40,136 [INFO] - Cargado datos del usuario
+2024-09-09 13:02:40,142 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:02:40,494 [INFO] - Cargado datos del usuario
+2024-09-09 13:02:40,496 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:04:36,835 [INFO] - Cargado datos del usuario
+2024-09-09 13:04:36,841 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:04:37,215 [INFO] - Cargado datos del usuario
+2024-09-09 13:04:37,217 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:05:18,617 [INFO] - Cargado datos del usuario
+2024-09-09 13:05:18,624 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 13:05:18,965 [INFO] - Cargado datos del usuario
+2024-09-09 13:05:18,967 [INFO] - Tareas encriptadas y guardadas

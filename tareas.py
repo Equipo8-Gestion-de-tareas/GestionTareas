@@ -13,7 +13,7 @@ tareas = {}
 f = None
 usr = ""
 
-def set_user_data(user_pass: str, user_name: str):
+def set_user_data(user_name: str, user_pass: str):
     global f, usr
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
@@ -259,10 +259,11 @@ menu.add_options([
 def menu_principal():
     menu.show()
 
+def init_ui(name: str, passw: str):
+    init(name, passw)
+    menu_principal()
+
 def init(name: str, passw: str):
     set_user_data(name, passw)
     cargar_tareas()
     guardar_tareas()
-    menu_principal()
-
-init("woww", "woww")
