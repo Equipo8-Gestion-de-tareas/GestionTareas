@@ -83,6 +83,16 @@ def editar_tarea_ui():
     ])
     menu_edit.show()
 
+def eliminar_tarea_ui():
+    tarea = get_tarea_por_id_ui()
+    conf = input(Fore.RED+ f"¿Eliminar tarea {tarea['id']}?"+Style.RESET_ALL+" Escribir \"SI\" para confirmar: ")
+    if conf.lower() == "si":
+        eliminar_tarea(tarea)
+        input("Tarea eliminada. Enter para continuar.")
+    else:
+        input("Confirmación incorrecta, tarea no eliminada. Enter para continuar.")
+    menu_principal()
+    
 def agregar_tarea_ui():
     titulo = input("Ingrese título: ")
     desc = input("Ingrese descripción: ")
@@ -184,8 +194,12 @@ def agregar_tarea(titulo: str, descripcion: str, fecha_vencimiento: datetime, et
     id = ultimo_id + 1
     tareas[id] = tarea
     tarea["id"] = id
-    logging.info("Tarea nueva agregada")
+    logging.info("Tarea nueva agregada por usuario")
     guardar_tareas()
+
+def eliminar_tarea(tarea):
+    del tareas[tarea["id"]]
+    log.info(f"Tarea {tarea['id']} eliminada por usuario")
 
 def editar_campo(tarea, campo: str, valor):
     if campo == "estado":
@@ -241,6 +255,7 @@ def cargar_tareas():
     encryp = bytes(encryp, encoding="utf-8")
     dec = f.decrypt(encryp).decode("utf-8")
     tareas = json.loads(dec, object_hook=_int_keys)
+    log.info("Tareas cargadas")
 
 def salir():
     guardar_tareas()
@@ -253,6 +268,7 @@ menu.add_options([
     ("Mostrar todas las tareas", mostrar_tareas_ui),
     ("Buscar tareas", buscar_tarea_ui),
     ("Editar tarea por ID", editar_tarea_ui),
+    ("Eliminar tarea por ID", eliminar_tarea_ui),
     ("Salir", salir)
 ])
 
