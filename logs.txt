@@ -315,3 +315,9 @@
 2024-09-09 15:39:38,463 [INFO] - Tarea 0 editada
 2024-09-09 15:39:38,470 [INFO] - Tareas encriptadas y guardadas
 2024-09-09 15:39:38,480 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 19:21:49,142 [INFO] - Cargado datos del usuario
+2024-09-09 19:21:49,142 [WARNING] - Excepcion esperada, archivo de datos guardado no encontrado, creando archivo
+2024-09-09 19:21:49,145 [INFO] - Tareas encriptadas y guardadas
+2024-09-09 19:22:13,615 [WARNING] - Usuario intenta acceder tarea inexistente
+2024-09-09 19:22:16,018 [WARNING] - Usuario intenta acceder tarea inexistente
+2024-09-09 19:22:17,031 [WARNING] - Input de ID incorrecto del usuario
