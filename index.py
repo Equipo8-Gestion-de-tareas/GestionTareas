@@ -1,6 +1,7 @@
 import logging
 import json
 import bcrypt
+import tareas
 from colorama import Fore, Style
 from uuid import uuid4
 from pymenu import Menu, select_menu
@@ -53,7 +54,9 @@ def login_ui():
 			print(Fore.RED + 'Contraseña incorrecta, intente nuevamente' + Style.RESET_ALL)
 
 	log.info('Usuario autenticado')
-	print(Fore.GREEN + 'Sesión iniciada correctamente' + Style.RESET_ALL)
+	print(Fore.GREEN + 'Sesión iniciada correctamente.' + Style.RESET_ALL)
+	input("Presione enter.")
+	tareas.init_ui(user_name, user_pass)
 
 """
 Signin functions
