@@ -10,5 +10,15 @@
     {
         "username": "k",
         "password": "$2b$12$zs2HD4WWn0VTz1LhsCwIbuhMT5B6hkXwhSHoSEaIJa41JaWqXil.a"
+    },
+    {
+        "id": "2e6584de-1c3e-40fb-a5a8-ec7f2bf0e3c7",
+        "username": "admin",
+        "password": "$2b$12$gQ4DgCh5GXe9M0QVgWhWjetMNbkakFR.v4wDbr4fTLSXOaTTyp38a"
+    },
+    {
+        "id": "54e95ec8-15da-4cf7-bfd8-d66b4e9d3533",
+        "username": "user",
+        "password": "$2b$12$ZBIxRON2ffFpfxLtstEd1OhA5nuD7/4K9xKBro.sBnI4SFZ4VCMkO"
     }
 ]
