@@ -1,8 +1,12 @@
+import logging
 import json
-from uuid import uuid4
 import bcrypt
 from colorama import Fore, Style
+from uuid import uuid4
 from pymenu import Menu, select_menu
+
+logging.basicConfig(level=logging.INFO, filename="logs.txt", format="%(asctime)s [%(levelname)s] - %(message)s")
+log = logging.getLogger(__name__)
 
 def get_user_by_name(user_name: str) -> dict:
 	with open('./db/users.json', 'r') as users_file:
@@ -25,9 +29,11 @@ def login(user_name: str, user_pass: str) -> int | dict:
 	# check if user exists
 	user = get_user_by_name(user_name)
 	if not user:
+		logging.warning('Usuario intenta entrar con un nombre de usuario no registrado')
 		return -1
 	# check if password is correct
 	if not check_password(user, user_pass):
+		logging.warning('Usuario intenta entrar con una contraseña incorrecta')
 		return -2
 	# login success
 	return user
@@ -46,6 +52,7 @@ def login_ui():
 		elif user == -2: # password wrong
 			print(Fore.RED + 'Contraseña incorrecta, intente nuevamente' + Style.RESET_ALL)
 
+	log.info('Usuario autenticado')
 	print(Fore.GREEN + 'Sesión iniciada correctamente' + Style.RESET_ALL)
 
 """
@@ -70,6 +77,7 @@ def create_user(user_name: str, user_pass: str) -> dict:
 	with open('./db/users.json', 'w') as users_file:
 		json.dump(users, users_file,indent=4)
 	
+	log.info('Se ha creado un nuevo usuario en la base de datos')
 	return user
 
 def signin(user_name: str, user_pass: str) -> int | dict:
@@ -77,6 +85,7 @@ def signin(user_name: str, user_pass: str) -> int | dict:
 	user = get_user_by_name(user_name)
 	if not user:
 		user = create_user(user_name,user_pass)
+		logging.warning('Usuario intenta crear una cuenta con un nombre de usuario ya existente')
 		return user
 	return -1
 
@@ -95,15 +104,17 @@ def signin_ui():
 	if selected_option == 'Si':
 		login_ui()
 	else:
+		log.info('Aplicación cerrada')
 		exit(1)
 
-def init():
+def main():
 	auth_menu = Menu('App - Gestión de Tareas')
 	auth_menu.add_options([
 		('Iniciar sesión', login_ui),
 		('Crear una cuenta', signin_ui)
 	])
 
+	log.info('Aplicación iniciada')
 	auth_menu.show()
 
-# init()
+main()
